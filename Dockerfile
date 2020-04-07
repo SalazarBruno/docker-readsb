@@ -30,6 +30,7 @@ RUN set -x && \
         nodejs \
         npm \
         pkg-config \
+        protobuf-c-compiler \
         git \
         && \
     git config --global advice.detachedHead false && \
