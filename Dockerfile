@@ -24,6 +24,7 @@ RUN set -x && \
         libprotobuf17 \
         libprotoc17 \
         librrd-dev \
+        librrd8 \
         libtecla-dev \
         libtecla1 \
         libusb-1.0-0 \
