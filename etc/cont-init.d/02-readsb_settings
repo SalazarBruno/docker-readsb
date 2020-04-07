@@ -1,0 +1,30 @@
+#!/usr/bin/with-contenv sh
+#shellcheck shell=sh
+
+if [ -z ${RECEIVER_OPTIONS+x} ]
+then
+    echo "Using default $(grep "RECEIVER_OPTIONS" /etc/default/readsb)"
+else
+    echo "RECEIVER_OPTIONS=${RECEIVER_OPTIONS}" >> /etc/default/readsb
+fi
+
+if [ -z ${DECODER_OPTIONS+x} ]
+then
+    echo "Using default $(grep "DECODER_OPTIONS" /etc/default/readsb)"
+else
+    echo "DECODER_OPTIONS=${DECODER_OPTIONS}" >> /etc/default/readsb
+fi
+
+if [ -z ${NET_OPTIONS+x} ]
+then
+    echo "Using default $(grep "NET_OPTIONS" /etc/default/readsb)"
+else
+    echo "NET_OPTIONS=${NET_OPTIONS}" >> /etc/default/readsb
+fi
+
+if [ -z ${OUTPUT_OPTIONS+x} ]
+then
+    echo "Using default $(grep "OUTPUT_OPTIONS" /etc/default/readsb)"
+else
+    echo "OUTPUT_OPTIONS=${OUTPUT_OPTIONS}" >> /etc/default/readsb
+fi

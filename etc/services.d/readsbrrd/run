@@ -1,0 +1,14 @@
+#!/usr/bin/with-contenv bash
+#shellcheck shell=bash
+
+cd /var/lib/collectd/rrd/localhost/readsb || exit 1
+
+source /etc/default/readsb
+
+s6-setuidgid readsb /usr/bin/readsbrrd \
+    $RRD_OPTIONS \
+    2>&1 | \
+    grep -v "(minimum one second step)" | \
+    awk -W Interactive '{print "[readsbrrd] " $0}'
+
+sleep 30

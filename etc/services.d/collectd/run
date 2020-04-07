@@ -1,0 +1,13 @@
+#!/usr/bin/with-contenv bash
+#shellcheck shell=bash
+
+source /etc/default/collectd
+
+/usr/sbin/collectd -t || exit 0
+
+/usr/sbin/collectd \
+    -f \
+    -C /etc/collectd/collectd.conf \
+    2>&1 | awk -W Interactive '{print "[collectd] " $0}'
+
+sleep 10

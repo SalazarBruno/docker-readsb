@@ -1,0 +1,9 @@
+#!/usr/bin/with-contenv bash
+#shellcheck shell=bash
+
+source /etc/default/cron
+
+/usr/sbin/cron \
+    -f \
+    $EXTRA_OPTS \
+    2>&1 | awk -W Interactive '{print "[cron] " $0}'

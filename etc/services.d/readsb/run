@@ -1,0 +1,13 @@
+#!/usr/bin/with-contenv bash
+#shellcheck shell=bash
+
+source /etc/default/readsb
+
+s6-setuidgid readsb /usr/bin/readsb \
+    $RECEIVER_OPTIONS \
+    $DECODER_OPTIONS \
+    $NET_OPTIONS \
+    $OUTPUT_OPTIONS \
+    --write-output /run/readsb \
+    --quiet \
+    2>&1 | awk -W Interactive '{print "[readsb] " $0}'

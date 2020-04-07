@@ -1,0 +1,4 @@
+#!/usr/bin/with-contenv sh
+#shellcheck shell=sh
+
+s6-setuidgid readsb bash /usr/share/readsb/graphs/boot.sh > /dev/null 2>&1 || exit 0

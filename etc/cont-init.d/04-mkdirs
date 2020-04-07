@@ -1,0 +1,7 @@
+#!/usr/bin/with-contenv bash
+#shellcheck shell=bash
+
+# Ensure directories exist with proper ownership
+
+mkdir -p /run/readsb
+chown -R readsb /run/readsb
