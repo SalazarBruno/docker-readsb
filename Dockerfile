@@ -1,4 +1,23 @@
-FROM debian:stable-slim AS builder_rtlsdr
+FROM node:slim as builder_readsb_webapp
+
+RUN set -x && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends \
+        git \
+        ca-certificates \
+        && \
+    echo "========== Building readsb webapp ==========" && \
+    git clone https://github.com/Mictronics/readsb-protobuf.git /src/readsb && \
+    cd /src/readsb && \
+    #export BRANCH_READSB=$(git tag --sort="-creatordate" | head -1) && \
+    BRANCH_READSB=dev && \
+    git checkout "${BRANCH_READSB}" && \
+    cd /src/readsb/webapp && \
+    npm install typescript -g && \
+    npm install && \
+    npm run build
+
+FROM debian:stable-slim AS final
 
 ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=2 \
     S6_CMD_ARG0=/usr/local/bin/readsb
@@ -128,6 +147,9 @@ RUN set -x && \
 
 # Copy config files
 COPY etc/ /etc/
+
+# Copy webapp
+COPY --from=builder_readsb_webapp /src/readsb/webapp/ /var/www/readsb/
 
 # Expose ports
 EXPOSE 30104/tcp 80/tcp 30001/tcp 30002/tcp 30003/tcp 30004/tcp 30005/tcp
