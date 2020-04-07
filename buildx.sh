@@ -1,6 +1,8 @@
 #!/usr/bin/env sh
 #shellcheck shell=sh
 
+set -xe
+
 REPO=mikenye
 IMAGE=readsb
 PLATFORMS="linux/amd64,linux/arm/v7,linux/arm64"
