@@ -110,6 +110,7 @@ RUN set -x && \
     make RTLSDR=yes BLADERF=yes PLUTOSDR=yes HAVE_BIASTEE=yes && \
     cp -v /src/readsb/readsb /usr/local/bin/readsb && \
     cp -v /src/readsb/viewadsb /usr/local/bin/viewadsb && \
+    mkdir -p /run/readsb && \
     echo "========== Final Config ==========" && \
     rm -v /etc/nginx/sites-enabled/default && \
     ln -vs /etc/nginx/sites-available/readsb /etc/nginx/sites-enabled/readsb && \
@@ -143,14 +144,13 @@ RUN set -x && \
         && \
     apt-get autoremove -y && \
     rm -rf /src/* /tmp/* /var/lib/apt/lists/* && \
-    mkdir -p /var/run/readsb && \
     cat /VERSIONS
 
 # Copy config files
 COPY etc/ /etc/
 
 # Copy webapp
-COPY --from=builder_readsb_webapp /src/readsb/webapp/src/ /var/www/readsb/
+COPY --from=builder_readsb_webapp /src/readsb/webapp/src/ /usr/share/readsb/html/
 
 # Expose ports
 EXPOSE 30104/tcp 80/tcp 30001/tcp 30002/tcp 30003/tcp 30004/tcp 30005/tcp

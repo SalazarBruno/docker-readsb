@@ -1,14 +1,33 @@
 server {
     listen 80 default_server;
     listen [::]:80 default_server;
-    root /var/www/readsb;
+    root /usr/share/readsb/html;
     index index.html;
     server_name _;
 
-    # Path to application's JSON data
+
+    location /radar/data {
+        alias /run/readsb/;
+        add_header 'Access-Control-Allow-Origin' '*';
+        access_log on;
+    }
+
+    location /radar {
+        alias /usr/share/readsb/html/;
+    }
+
+    location /graphs/images {
+        alias /run/readsb/;
+    }
+
+    location /graphs {
+        alias /usr/share/readsb/html/graphs/;
+    }
+
     location /data {
-        alias /var/run/readsb/;
-        access_log off;
+        add_header 'Access-Control-Allow-Origin' '*';
+        alias /run/readsb/;
+        access_log on;
     }
 
     location / {
