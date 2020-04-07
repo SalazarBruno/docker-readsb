@@ -143,6 +143,7 @@ RUN set -x && \
         && \
     apt-get autoremove -y && \
     rm -rf /src/* /tmp/* /var/lib/apt/lists/* && \
+    mkdir -p /var/run/readsb && \
     cat /VERSIONS
 
 # Copy config files
