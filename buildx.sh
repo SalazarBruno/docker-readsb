@@ -10,11 +10,11 @@ export DOCKER_CLI_EXPERIMENTAL="enabled"
 docker buildx use homecluster
 
 # Build & push latest
-docker buildx build -t "${REPO}/${IMAGE}:latest" --compress --push --platform "${PLATFORMS}" .
+docker buildx build -t "${REPO}/${IMAGE}:protobuf-latest" --compress --push --platform "${PLATFORMS}" .
 
 # Get piaware version from latest
 docker pull "${REPO}/${IMAGE}:latest"
-VERSION=$(docker run --rm --entrypoint cat "${REPO}/${IMAGE}:latest" /VERSIONS | grep readsb | cut -d " " -f 2)
+VERSION=$(docker run --rm --entrypoint cat "${REPO}/${IMAGE}:protobuf-latest" /VERSIONS | grep readsb | cut -d " " -f 2)
 
 # Build & push version-specific
-docker buildx build -t "${REPO}/${IMAGE}:${VERSION}" --compress --push --platform "${PLATFORMS}" .
+docker buildx build -t "${REPO}/${IMAGE}:protobuf-${VERSION}" --compress --push --platform "${PLATFORMS}" .

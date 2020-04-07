@@ -75,7 +75,7 @@ RUN set -x && \
     make && \
     make install && \
     echo "========== Building readsb ==========" && \
-    git clone https://github.com/Mictronics/readsb.git /src/readsb && \
+    git clone https://github.com/Mictronics/readsb-protobuf.git /src/readsb && \
     cd /src/readsb && \
     export BRANCH_READSB=$(git tag --sort="-creatordate" | head -1) && \
     git checkout "${BRANCH_READSB}" && \
