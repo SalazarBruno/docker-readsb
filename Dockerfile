@@ -22,6 +22,7 @@ RUN set -x && \
         libprotobuf-c-dev \
         libprotobuf17 \
         libprotoc17 \
+        librrd-dev \
         libtecla-dev \
         libtecla1 \
         libusb-1.0-0 \
@@ -108,6 +109,7 @@ RUN set -x && \
         libprotobuf-c-dev \
         libprotobuf17 \
         libprotoc17 \
+        librrd-dev \
         libtecla-dev \
         libusb-1.0-0-dev \
         libxml2-dev \
