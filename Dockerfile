@@ -81,7 +81,8 @@ RUN set -x && \
     echo "========== Building readsb ==========" && \
     git clone https://github.com/Mictronics/readsb-protobuf.git /src/readsb && \
     cd /src/readsb && \
-    export BRANCH_READSB=$(git tag --sort="-creatordate" | head -1) && \
+    #export BRANCH_READSB=$(git tag --sort="-creatordate" | head -1) && \
+    BRANCH_READSB=master && \
     git checkout "${BRANCH_READSB}" && \
     echo "readsb ${BRANCH_READSB}" >> /VERSIONS && \
     make RTLSDR=yes BLADERF=yes PLUTOSDR=yes HAVE_BIASTEE=yes && \
@@ -104,6 +105,9 @@ RUN set -x && \
         libedit-dev \
         libfl-dev \
         libncurses-dev \
+        libprotobuf-c-dev \
+        libprotobuf17 \
+        libprotoc17 \
         libtecla-dev \
         libusb-1.0-0-dev \
         libxml2-dev \
@@ -112,6 +116,7 @@ RUN set -x && \
         nodejs \
         npm \
         pkg-config \
+        protobuf-c-compiler \
         && \
     apt-get autoremove -y && \
     rm -rf /src/* /tmp/* /var/lib/apt/lists/* && \
