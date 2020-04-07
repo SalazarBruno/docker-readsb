@@ -12,12 +12,15 @@ RUN set -x && \
         curl \
         g++ \
         gcc \
+        git \
         gnupg \
         libc-dev \
         libedit-dev \
         libfl-dev \
         libncurses-dev \
         libncurses6 \
+        libprotobuf17 \
+        libprotoc17 \
         libtecla-dev \
         libtecla1 \
         libusb-1.0-0 \
@@ -31,7 +34,6 @@ RUN set -x && \
         npm \
         pkg-config \
         protobuf-c-compiler \
-        git \
         && \
     git config --global advice.detachedHead false && \
     echo "========== Building RTL-SDR ==========" && \
