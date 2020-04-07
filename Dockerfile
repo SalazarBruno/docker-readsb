@@ -149,7 +149,7 @@ RUN set -x && \
 COPY etc/ /etc/
 
 # Copy webapp
-COPY --from=builder_readsb_webapp /src/readsb/webapp/ /var/www/readsb/
+COPY --from=builder_readsb_webapp /src/readsb/webapp/src/ /var/www/readsb/
 
 # Expose ports
 EXPOSE 30104/tcp 80/tcp 30001/tcp 30002/tcp 30003/tcp 30004/tcp 30005/tcp
