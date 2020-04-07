@@ -20,6 +20,7 @@ RUN set -x && \
         libncurses-dev \
         libncurses6 \
         libprotobuf-c-dev \
+        libprotobuf-c1 \
         libprotobuf17 \
         libprotoc17 \
         librrd-dev \
