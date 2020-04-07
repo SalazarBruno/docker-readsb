@@ -19,6 +19,7 @@ RUN set -x && \
         libfl-dev \
         libncurses-dev \
         libncurses6 \
+        libprotobuf-c-dev \
         libprotobuf17 \
         libprotoc17 \
         libtecla-dev \
