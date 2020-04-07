@@ -82,7 +82,7 @@ RUN set -x && \
     git clone https://github.com/Mictronics/readsb-protobuf.git /src/readsb && \
     cd /src/readsb && \
     #export BRANCH_READSB=$(git tag --sort="-creatordate" | head -1) && \
-    BRANCH_READSB=master && \
+    BRANCH_READSB=dev && \
     git checkout "${BRANCH_READSB}" && \
     echo "readsb ${BRANCH_READSB}" >> /VERSIONS && \
     make RTLSDR=yes BLADERF=yes PLUTOSDR=yes HAVE_BIASTEE=yes && \
