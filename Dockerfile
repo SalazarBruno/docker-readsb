@@ -1,3 +1,22 @@
+FROM node:slim as webapp_builder
+
+RUN set -x && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends \
+        ca-certificates \
+        git \
+        && \
+    echo "========== Building readsb webapp ==========" && \
+    git clone https://github.com/Mictronics/readsb-protobuf.git /src/readsb && \
+    cd /src/readsb && \
+    #export BRANCH_READSB=$(git tag --sort="-creatordate" | head -1) && \
+    BRANCH_READSB=dev && \
+    git checkout "${BRANCH_READSB}" && \
+    cd /src/readsb/webapp && \
+    npm install && \
+    npm install -g typescript && \
+    npm run build
+
 FROM debian:stable-slim AS final
 
 ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=2
@@ -126,6 +145,9 @@ RUN set -x && \
 
 # Copy config files
 COPY etc/ /etc/
+
+# Update webapp files
+COPY --from=webapp_builder /src/readsb/webapp/src/ /usr/share/readsb/html/
 
 # Expose ports
 EXPOSE 30104/tcp 80/tcp 30001/tcp 30002/tcp 30003/tcp 30004/tcp 30005/tcp
