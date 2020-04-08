@@ -220,7 +220,7 @@ Which should display a departure-lounge-style screen showing all the aircraft be
 
 Press `CTRL-C` to escape this screen.
 
-You should also be able to point your web browser at `http://dockerhost:8080/` to view the web interface.
+You should also be able to point your web browser at `http://dockerhost:8080/` to view the web interface. I haven't been able to get the web interface to display properly in Safari, however Firefox works fine. YMMV.
 
 ## Runtime Configuration
 
