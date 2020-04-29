@@ -28,6 +28,10 @@ Tested and working on:
 
 ## Changelog
 
+### 20200429
+
+* Change version of `rtl-sdr` to address incompatibility with `RTL2838UHIDIR` hardware. Thanks to Ryan Guzy for troubleshooting.
+
 ### 20200408
 
 * Create `protobuf` tags for in-development v4.0.0.
