@@ -1,6 +1,9 @@
 #!/usr/bin/with-contenv sh
 # shellcheck shell=sh
 
+# temp debugging for https://github.com/mikenye/docker-readsb/issues/16
+set -ex
+
 # Set up timezone
 if [ -z "${TZ}" ]; then
   echo "WARNING: TZ environment variable not set"
